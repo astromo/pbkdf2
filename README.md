@@ -16,7 +16,7 @@ password.create('test123', function(err, hash) {
 })
 ```
 
-# Validate a hash
+## Validate a hash
 ```javascript
 var hash = 'sha256:64000:VImSI/1MUSFHuQzrbelyaKnjDcp7LoZwZRZmc8ErLq4=:708eb4b660fdb56b911abbdc26faae0aa195dbc84e46da23d48ae7630ef25808'
 password = new PBKDF2(hash)
