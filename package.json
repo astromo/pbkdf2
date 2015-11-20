@@ -1,5 +1,5 @@
 {
-  "name": "simple-pbkdf2",
+  "name": "painless-pbkdf2",
   "version": "0.1.0",
   "description": "A simple PBKDF2 wrapper with great defaults and a sensible interface",
   "main": "index.js",

@@ -6,7 +6,7 @@ The format is `ALGORITHM:ITTERATIONS:SALT:DERIVED_KEY`.
 
 ## Usage
 
-`var PBKDF2 = require('simple-pbkdf2')`
+`var PBKDF2 = require('painless-pbkdf2')`
 
 ## Create a password hash
 ```javascript
