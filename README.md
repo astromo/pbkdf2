@@ -2,7 +2,7 @@
 
 This library generates a formatted hash that you can store in your database as a single value.
 
-The format is `ALGORITHM:ITTERATIONS:SALT:DERIVED_KEY.
+The format is `ALGORITHM:ITTERATIONS:SALT:DERIVED_KEY`.
 
 ## Usage
 
