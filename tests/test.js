@@ -34,7 +34,7 @@ test('should invalidate when incorrect password', function (t) {
 })
 
 test('should parse the correct options', function (t) {
-  t.plan(1)
+  t.plan(3)
   var p = new PBKDF2()
 
   var options = p._parse('sha256:100000:bXktc2FsdA==:6D795F646572697665645F6B6579')
@@ -44,4 +44,6 @@ test('should parse the correct options', function (t) {
     salt_length: 7,
     key_length: 14
   })
+  t.equal(p.derived_key, '6D795F646572697665645F6B6579')
+  t.equal(p.salt, 'bXktc2FsdA==')
 })
