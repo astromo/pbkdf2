@@ -15,7 +15,8 @@
   "homepage": "https://github.com/astromo/pbkdf2",
   "main": "index.js",
   "scripts": {
-    "test": "standard && tape tests/*"
+    "test": "standard && tape tests/*",
+    "coveralls": "istanbul cover tests/*.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "keywords": [
     "password",
