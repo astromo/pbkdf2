@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/astromo/pbkdf2.svg?branch=master)](https://travis-ci.org/astromo/pbkdf2)
+[![Coverage Status](https://coveralls.io/repos/astromo/pbkdf2/badge.svg?branch=master&service=github)](https://coveralls.io/github/astromo/pbkdf2?branch=master)
 
 # PBKDF2
 
