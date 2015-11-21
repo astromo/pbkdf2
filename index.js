@@ -1,8 +1,6 @@
-'use strict';
-
-var _defaults = require('lodash.defaults');
-var crypto = require('crypto');
-var util   = require('util');
+var _defaults = require('lodash.defaults')
+var crypto = require('crypto')
+var util = require('util')
 
 function PBKDF2 (options) {
   var defaults = {
@@ -16,16 +14,16 @@ function PBKDF2 (options) {
     // see https://crackstation.net/hashing-security.htm
     salt_length: 32,
     key_length: 32
-  };
+  }
 
-  this._options = _defaults(options || {}, defaults);
+  this._options = _defaults(options || {}, defaults)
 
   // the input is a hash we want to validate
   if (typeof options === 'string') {
-    this._options = this._parse(options);
+    this._options = this._parse(options)
   }
 
-  return this;
+  return this
 }
 
 /**
@@ -34,21 +32,21 @@ function PBKDF2 (options) {
  * @param  {Function} callback
  */
 PBKDF2.prototype.create = function (password, callback) {
-  var self = this;
+  var self = this
 
   // get random bytes
   crypto.randomBytes(self._options.salt_length, function (err, bytes) {
-    if (err) return callback(err);
+    if (err) return callback(err)
 
-    var salt = self.salt = bytes.toString('base64');
+    var salt = self.salt = bytes.toString('base64')
 
     self.createPassword(password, salt, function (err, key) {
-      if (err) return callback(err);
+      if (err) return callback(err)
 
-      var hash = self.format(salt, key);
-      return callback(null, hash);
-    });
-  });
+      var hash = self.format(salt, key)
+      return callback(null, hash)
+    })
+  })
 }
 
 /**
@@ -58,14 +56,14 @@ PBKDF2.prototype.create = function (password, callback) {
  * @param  {Function} callback
  * @return {[type]}            [description]
  */
-PBKDF2.prototype.createPassword = function(password, salt, callback) {
+PBKDF2.prototype.createPassword = function (password, salt, callback) {
   var self = this
 
   crypto.pbkdf2(password, self.salt, self._options.iterations, self._options.key_length, 'sha256', function (err, key) {
-    if (err) return callback(err);
-    key = self.derived_key = key.toString('hex');
-    return callback(null, key);
-  });
+    if (err) return callback(err)
+    key = self.derived_key = key.toString('hex')
+    return callback(null, key)
+  })
 }
 
 /**
@@ -79,7 +77,7 @@ PBKDF2.prototype.format = function (salt, key) {
     this._options.algorithm,
     this._options.iterations,
     salt,
-    key);
+    key)
 }
 
 /**
@@ -88,21 +86,20 @@ PBKDF2.prototype.format = function (salt, key) {
  * @return {object}        options object
  */
 PBKDF2.prototype._parse = function (hash) {
-
   // parse options used for the hash
-  var args = hash.split(':');
+  var args = hash.split(':')
   var options = {
     algorithm: args[0],
     iterations: parseInt(args[1], 10),
     salt_length: new Buffer(args[2], 'base64').length,
     key_length: new Buffer(args[3], 'hex').length
-  };
-  this._options = options;
+  }
+  this._options = options
 
-  this.salt = args[2];
-  this.derived_key = args[3];
+  this.salt = args[2]
+  this.derived_key = args[3]
 
-  return options;
+  return options
 }
 
 /**
@@ -113,11 +110,11 @@ PBKDF2.prototype._parse = function (hash) {
 PBKDF2.prototype.validate = function (password, callback) {
   var self = this
   var salt = this.salt
-  var derived_key = this.derived_key;
+  var derived_key = this.derived_key
 
   self.createPassword(password, salt, function (err, key) {
-    return callback(err, key === derived_key);
-  });
+    return callback(err, key === derived_key)
+  })
 }
 
-module.exports = PBKDF2;
+module.exports = PBKDF2

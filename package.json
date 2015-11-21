@@ -2,17 +2,20 @@
   "name": "painless-pbkdf2",
   "version": "0.1.0",
   "description": "A simple PBKDF2 wrapper with great defaults and a sensible interface",
-  "contributors": [{
-    "name": "Gilles De Mey",
-    "email": "gilles.de.mey@gmail.com"
-  }, {
-    "name": "Michiel De Mey",
-    "email": "de.mey.michiel@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Gilles De Mey",
+      "email": "gilles.de.mey@gmail.com"
+    },
+    {
+      "name": "Michiel De Mey",
+      "email": "de.mey.michiel@gmail.com"
+    }
+  ],
   "homepage": "https://github.com/astromo/pbkdf2",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*"
+    "test": "standard index.js && mocha tests/*"
   },
   "keywords": [
     "password",
@@ -33,6 +36,7 @@
     "lodash.defaults": "^3.1.2"
   },
   "devDependencies": {
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "standard": "^5.4.1"
   }
 }
