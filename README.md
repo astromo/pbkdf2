@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/astromo/pbkdf2.svg?branch=master)](https://travis-ci.org/astromo/pbkdf2)
+
 # PBKDF2
 
 This library generates a formatted hash that you can store in your database as a single value.
