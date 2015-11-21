@@ -1,43 +1,34 @@
-var assert = require('assert')
 var PBKDF2 = require('../index')
+var test = require('tape')
+var calculated_hash
 
-describe('PBKDF2 password library', function () {
+test('should generate a correct password hash', function (t) {
+  t.plan(1)
+  var password = new PBKDF2()
 
-  var calculated_hash
-
-  it('should generate a correct password hash', function (done) {
-
-    var password = new PBKDF2()
-    password.create('test123', function(err, hash) {
-      if (err) throw err
-      calculated_hash = hash
-      done()
-    })
-
+  password.create('test123', function (err, hash) {
+    if (err) t.fail(err)
+    calculated_hash = hash
+    t.ok(true)
   })
+})
 
-  it('should validate the correct password', function (done) {
+test('should validate the correct password', function (t) {
+  t.plan(1)
+  var password = new PBKDF2(calculated_hash)
 
-    password = new PBKDF2(calculated_hash)
-
-    password.validate('test123', function (err, valid) {
-      if (err) throw err
-      assert.equal(valid, true)
-      done()
-    })
-
+  password.validate('test123', function (err, valid) {
+    if (err) t.fail(err)
+    t.equal(valid, true)
   })
+})
 
-  it('should invalidate when incorrect password', function (done) {
+test('should invalidate when incorrect password', function (t) {
+  t.plan(1)
+  var password = new PBKDF2(calculated_hash)
 
-    password = new PBKDF2(calculated_hash)
-
-    password.validate('test1234', function (err, valid) {
-      if (err) throw err
-      assert.equal(valid, false)
-      done()
-    })
-
+  password.validate('test1234', function (err, valid) {
+    if (err) t.fail(err)
+    t.equal(valid, false)
   })
-
 })

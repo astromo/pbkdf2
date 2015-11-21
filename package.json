@@ -15,7 +15,7 @@
   "homepage": "https://github.com/astromo/pbkdf2",
   "main": "index.js",
   "scripts": {
-    "test": "standard index.js && mocha tests/*"
+    "test": "standard && tape tests/*"
   },
   "keywords": [
     "password",
@@ -36,7 +36,7 @@
     "lodash.defaults": "^3.1.2"
   },
   "devDependencies": {
-    "mocha": "^2.3.4",
-    "standard": "^5.4.1"
+    "standard": "^5.4.1",
+    "tape": "^4.2.2"
   }
 }
