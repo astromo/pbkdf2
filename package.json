@@ -2,6 +2,14 @@
   "name": "painless-pbkdf2",
   "version": "0.1.0",
   "description": "A simple PBKDF2 wrapper with great defaults and a sensible interface",
+  "contributors": [{
+    "name": "Gilles De Mey",
+    "email": "gilles.de.mey@gmail.com"
+  }, {
+    "name": "Michiel De Mey",
+    "email": "de.mey.michiel@gmail.com"
+  }],
+  "homepage": "https://github.com/astromo/pbkdf2",
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/*"
@@ -13,7 +21,11 @@
     "pbkdf2"
   ],
   "repository": {
-    "git": "https://github.com/astromo/pbkdf2"
+    "type": "git",
+    "url": "https://github.com/astromo/pbkdf2"
+  },
+  "bugs": {
+    "url": "https://github.com/astromo/pbkdf2/issues"
   },
   "author": "Gilles De Mey <gilles.de.mey@gmail.com>",
   "license": "MIT",
