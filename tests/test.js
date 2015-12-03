@@ -47,3 +47,12 @@ test('should parse the correct options', function (t) {
   t.equal(p.derived_key, '6D795F646572697665645F6B6579')
   t.equal(p.salt, 'bXktc2FsdA==')
 })
+
+test('should throw an error when input is invalid', function (t) {
+  t.plan(1)
+  var p = new PBKDF2()
+
+  t.throws(function () {
+    p._parse('sha256:100000:bXktc2Fsd:6D795F646572697665645F6B657')
+  })
+})
